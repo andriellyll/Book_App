@@ -1,0 +1,12 @@
+.form {
+    margin: 20px 0px;
+}
+
+.form form {
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+

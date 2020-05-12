@@ -1,0 +1,33 @@
+.book-item{
+    margin: 20px;
+    padding: 15px;
+    height: 140px;
+    width: 350px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-item header {
+    margin: 5px 0px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.book-info span {
+    margin-top: 8px;
+}
+
+.buttons {
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttons button {
+    background-color: tomato;
+}
