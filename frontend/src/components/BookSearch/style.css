@@ -3,6 +3,9 @@
     border-radius: 8px;
     margin: 20px 0px;
     min-height: 120px;
+}
+
+.search form {
     display: flex;
     flex-direction: column;
 }
