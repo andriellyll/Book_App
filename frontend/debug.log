@@ -10,3 +10,10 @@
 [0513/114851.690:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0513/141501.218:ERROR:crash_report_database_win.cc(428)] unexpected header
 [0513/142751.315:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0513/143001.227:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0513/144501.229:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0513/150001.248:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0513/151501.248:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0513/152937.507:ERROR:process_info.cc(359)] UncheckedAllocate
+[0513/152937.507:ERROR:process_info.cc(359)] UncheckedAllocate
+[0513/152937.534:ERROR:crash_report_database_win.cc(428)] unexpected header
