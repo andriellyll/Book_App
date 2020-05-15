@@ -39,26 +39,24 @@ module.exports = {
         const { id } = request.params;
         const { name, author, genre } = request.body;
 
-        let book = await connection('books')
-            .where('id', id)
-            .first();
-
+        let book = await connection('books').where('id', id).first();
+    
         if(!book){
             return response.status(400).json({ error: 'No book found' });
         }
 
-        let bookCheckName = await connection('books')
-            .whereNot('id', id)
-            .andWhere('name', name);
+        let bookCheckName = await connection('books').whereNot('id', id).andWhere('name', name).first();
 
         if(!bookCheckName){
-            book = book.update({
-                name: name,
-                author: author,
-                genre: genre       
-            });
+            await connection('books')
+                .where('id', id)
+                .update({
+                    name: name,
+                    author: author,
+                    genre: genre       
+                })
 
-            return response.json(book);
+            return response.status(200).json('Book updated');
         }
 
         return response.status(400).json({ error: 'A book with this name already exists.' });
