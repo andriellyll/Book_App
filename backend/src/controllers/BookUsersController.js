@@ -2,17 +2,26 @@ const connection = require('../database/connection');
 
 module.exports = {
     async store(request, response){
+        const { name, password } = request.headers;
         const { user_id, book_id } = request.query;
         
-        let user = await connection('users')
-            .where('id', user_id)
+        const user = await connection('users')
+            .where({
+                name: name,
+                passwd: password,
+                id: user_id
+            })
             .first();
+
+        if(!name || !password || !user){
+            response.status(401).json({error: 'Not allowed'})
+        }
 
         let book = await connection('books')
             .where('id', book_id)
             .first();
 
-        if(!user || !book){
+        if(!book){
             return response.status(400).json({error: 'Something went wrong'});
         }
 
@@ -27,38 +36,45 @@ module.exports = {
     },
 
     async index(request, response){
+        const { name, password } = request.headers;
         const { user_id } = request.query;
 
-        let user = await connection('users')
-            .where('id', user_id)
+        const user = await connection('users')
+            .where({
+                name: name,
+                passwd: password,
+                id: user_id
+            })
             .first();
 
-        if(!user){
-            return response.status(400).json({error: 'Something went wrong'});
+        if(!name || !password || !user){
+            response.status(401).json({error: 'Not allowed'})
         }
         
         const books = await connection('books')
                 .join('book_users', 'id', 'book_users.book_id')
+                .where('user_id', user_id)
                 .select('*');
         
         return response.json(books);
     },
 
     async delete(request, response) {
+        const { name, password } = request.headers;
         const { user_id, book_id } = request.query;
-        
-        let user = await connection('users')
-            .where('id', user_id)
+
+        const user = await connection('users')
+            .where({
+                name: name,
+                passwd: password,
+                id: user_id
+            })
             .first();
 
-        let book = await connection('books')
-            .where('id', book_id)
-            .first();
-
-        if(!user || !book){
-            return response.status(400).json({error: 'Something went wrong'});
+        if(!name || !password || !user){
+            response.status(401).json({error: 'Not allowed'})
         }
-
+        
         const relation = await connection('book_users')
             .where({
                 user_id: user_id,
