@@ -1,0 +1,26 @@
+.login {
+    width: 100%;
+    min-height: 625px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FAFAFA;
+}
+
+.login form {
+    margin: 50px 100px;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.login form header{
+    margin: 10px;
+}
+
+.login form button {
+    margin-top: 40px
+}

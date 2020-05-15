@@ -8,9 +8,9 @@ module.exports = {
     },
 
     async store (request, response) {
-        const name = request.headers.name;
-        const password = request.headers.password;
+        const { name, password } = request.headers;
 
+        console.log(name, password);
         let user = await connection('users')
             .where('name', name)
             .first();

@@ -1,0 +1,25 @@
+
+.profile {
+    min-height: 625px;
+    background-color: #FAFAFA;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile .books{
+    width: 70%;
+    padding: 30px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profile .inputs {
+    padding: 30px;
+    width: 30%;
+    height: 100%;
+}
+
+.profile h3 {
+    padding: 18px 8px;
+}

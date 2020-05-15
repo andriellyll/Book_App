@@ -32,7 +32,7 @@ module.exports = {
             return response.status(400).json({ error: 'No book found' });
         }
 
-        return response.json(book)
+        return response.json([book])
     },
 
     async update (request, response) {
