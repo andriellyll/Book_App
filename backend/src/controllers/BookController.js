@@ -1,8 +1,8 @@
-const Book = require('../models/Book');
+const connection = require('../database/connection');
 
 module.exports = {
     async index (request, response) {
-        const books = await Book.find();
+        const books = await connection('books').select();
 
         return response.json(books);
     },
@@ -10,10 +10,10 @@ module.exports = {
     async store (request, response) {
         const {name, author, genre} = request.body;
 
-        let book = await Book.findOne({ name });
-        
+        let book = await connection('books').where('name', name).first();
+
         if(!book){
-            book = await Book.create({
+            book = await connection('books').insert({
                 name: name,
                 author: author,
                 genre: genre,
@@ -26,10 +26,12 @@ module.exports = {
     async find (request, response) {
         const { name } = request.query;
 
-        let book = await Book.find({
-            name: { $eq: name }
-        })
+        let book = await connection('books').where('name', name).first();
     
+        if(!book){
+            return response.status(400).json({ error: 'No book found' });
+        }
+
         return response.json(book)
     },
 
@@ -37,23 +39,37 @@ module.exports = {
         const { id } = request.params;
         const { name, author, genre } = request.body;
 
-        let book = await Book.find({
-            _id: { $eq: id }
-        }).update({
-            name: name,
-            author: author,
-            genre: genre       
-        })
+        let book = await connection('books')
+            .where('id', id)
+            .first();
 
-        return response.json(book);
+        if(!book){
+            return response.status(400).json({ error: 'No book found' });
+        }
+
+        let bookCheckName = await connection('books')
+            .whereNot('id', id)
+            .andWhere('name', name);
+
+        if(!bookCheckName){
+            book = book.update({
+                name: name,
+                author: author,
+                genre: genre       
+            });
+
+            return response.json(book);
+        }
+
+        return response.status(400).json({ error: 'A book with this name already exists.' });
     },
 
     async delete (request, response) {
         const { id } = request.params;
         
-        let book = await Book.findOneAndRemove({ 
-            _id: { $eq: id } 
-        })
+        let book = await connection('books')
+            .where('id', id)
+            .del();
 
         return response.json(book);
     }

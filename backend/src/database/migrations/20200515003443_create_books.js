@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema.createTable('books', function(table){
         table.increments('id');
