@@ -16,18 +16,21 @@ export default function Login(){
         e.preventDefault();
 
         try{
-            await api.get('/session', {
+            const response = await api.get('/session', {
                 headers: {
                     name: loginName,
                     password: loginPassword
                 }
             })
 
-            setLoginName('');
-            setLoginPassword('');
+            const { id } = response.data;
 
             localStorage.setItem('username', loginName);
             localStorage.setItem('password', loginPassword);
+            localStorage.setItem('user_id', id);
+            
+            setLoginName('');
+            setLoginPassword('');
 
             history.push('/profile');
         } catch(error){
@@ -37,7 +40,7 @@ export default function Login(){
 
     async function handleRegister(e){
         e.preventDefault();
-        console.log(registerPassword, registerName)
+        
         try{
             await api.post('/users', {}, {
                 headers: {
@@ -66,7 +69,7 @@ export default function Login(){
                 />
                 <input
                     value={loginPassword} 
-                    type="text" 
+                    type="password" 
                     placeholder="Senha"
                     onChange={(e) => {setLoginPassword(e.target.value)}}
                 />
@@ -84,7 +87,7 @@ export default function Login(){
                     onChange={(e) => {setRegisterName(e.target.value)}}
                 />
                 <input 
-                    type="text" 
+                    type="password" 
                     value={registerPassword}
                     placeholder="Senha"
                     onChange={(e) => {setRegisterPassword(e.target.value)}}

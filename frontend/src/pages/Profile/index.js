@@ -9,20 +9,34 @@ import api from '../../services/api';
 function Profile () {
     const [books, setBooks] = useState([]);
     const [bookSearch, setBookSearch] = useState([]);
-    const [isSearch, setisSearch] = useState(false);
+    const [isSearch, setIsSearch] = useState(false);
 
     async function handleRegister(data) {
-        setisSearch(false);
+        setIsSearch(false);
         await api.post('/books', data);
+        const response = await api.get('/books');
+        setBooks(response.data);
     }
 
     async function handleDelete(id) {
-        setisSearch(false);
+        setIsSearch(false);
         await api.delete(`/books/${id}`);
+        const response = await api.get('/books');
+        setBooks(response.data);
+    }
+
+    async function handleAddUserBook(id) {
+        await api.post(`users/relate?user_id=${localStorage.getItem('user_id')}&book_id=${id}`, 
+        {}, {
+            headers: {
+                name: localStorage.getItem('username'),
+                password: localStorage.getItem('password')
+            }
+        });
     }
 
     async function handleSearch(name) {
-        setisSearch(true);
+        setIsSearch(true);
         const response = await api.get(`/books/search?name=${name}`);
         setBookSearch(response.data);
     }
@@ -44,6 +58,7 @@ function Profile () {
                   genre={book.genre}
                   id={book.id}
                   handleDelete={(id) => handleDelete(id)}
+                  handleAddUserBook={(id) => handleAddUserBook(id)}
               />
         )));
     }
@@ -54,18 +69,31 @@ function Profile () {
     useEffect(() => {
         api.get('/books')
             .then(response => {
-                setBooks(response.data)
-            });    
-    });
+                setBooks(response.data);
+            });
+    }, [isSearch]);
     
     return (
         <div className="profile">
-            <div className="inputs">
-                <Form onSubmit={(data) => handleRegister(data)}/>
-                <Search onSubmit={(name) => handleSearch(name)}/>
-            </div>
-            <div className="books">
-                {renderBooks()}
+            <header id="page_header">
+                <h3>Bem vindo(a), {localStorage.getItem('username')}</h3>
+                <div className="links">
+                    <a href='/books'>Meus Livros</a>
+                    <a 
+                        href='/' 
+                        onClick={() => {localStorage.clear()}}>
+                        Sair
+                    </a>
+                </div>
+            </header>
+            <div className="profile_books">
+                <div className="inputs">
+                    <Form onSubmit={(data) => handleRegister(data)}/>
+                    <Search onSubmit={(name) => handleSearch(name)}/>
+                </div>
+                <div className="books">
+                    {renderBooks()}
+                </div>
             </div>
         </div>
     )

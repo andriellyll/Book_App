@@ -28,6 +28,6 @@
     justify-content: flex-end;
 }
 
-.buttons button {
+.buttons #delete {
     background-color: tomato;
 }

@@ -17,3 +17,5 @@
 [0513/152937.507:ERROR:process_info.cc(359)] UncheckedAllocate
 [0513/152937.507:ERROR:process_info.cc(359)] UncheckedAllocate
 [0513/152937.534:ERROR:crash_report_database_win.cc(428)] unexpected header
+[0517/105018.332:ERROR:process_info.cc(359)] UncheckedAllocate
+[0517/105021.763:ERROR:process_info.cc(359)] UncheckedAllocate

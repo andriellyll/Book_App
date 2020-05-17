@@ -10,7 +10,6 @@ module.exports = {
     async store (request, response) {
         const { name, password } = request.headers;
 
-        console.log(name, password);
         let user = await connection('users')
             .where('name', name)
             .first();
@@ -72,14 +71,14 @@ module.exports = {
             return response.status(400).json({ error: 'Invalid username or password' });
         }
 
-        const username = await connection('users')
+        const info = await connection('users')
             .where({
                 name: name,
                 passwd: password
             })
-            .select('name')
+            .select('id')
             .first();
 
-        return response.json(username);
+        return response.json(info);
     }
 }

@@ -1,34 +1,21 @@
-.profile {
+
+.books_profile {
     min-height: 625px;
     background-color: #FAFAFA;
     display: flex;
     flex-direction: column;
 }
 
-.profile_books{
-    display: flex;
-    flex-direction: row;
+.books_profile h3 {
+    margin: 20px;
 }
 
-.profile .books{
-    width: 70%;
-    padding: 30px;
-    height: 100%;
+.books_profile #books {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-.profile .inputs {
-    padding: 30px;
-    width: 30%;
-    height: 100%;
-}
-
-.profile h3 {
-    padding: 18px 8px;
-}
-
-.profile #page_header {
+.books_profile #header {
     height: 70px;
     background-color: #87CEEB;
     color: #fff;
@@ -38,13 +25,13 @@
     padding: 10px;
 }
 
-.profile #page_header .links a {
+.books_profile a {
     padding: 20px;
     text-decoration: none;
     color: #fff;
 }
 
-.profile #page_header .links a:hover{
+.books_profile #header a:hover{
     background-color: #FAFAFA;
     color: black;
     height: fit-content;
