@@ -8,7 +8,7 @@ module.exports = {
     },
 
     async store (request, response) {
-        const { name, password } = request.headers;
+        const { name, password } = request.body;
 
         let user = await connection('users')
             .where('name', name)
@@ -28,7 +28,7 @@ module.exports = {
 
     async update (request, response) {
         const { id } = request.params;
-        const {name, password} = request.headers;
+        const {name, password} = request.body;
 
         let user = await connection('users')
             .where('id', id)

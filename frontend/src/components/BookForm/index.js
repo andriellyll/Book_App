@@ -7,6 +7,11 @@ function Form(props) {
   const [genre, setGenre] = useState('');
 
   function handleSubmit(e){
+
+    if(!name || !author || !genre){
+      return;
+    }
+
     e.preventDefault();
     const data = {
       name: name,

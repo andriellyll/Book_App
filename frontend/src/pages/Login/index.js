@@ -42,11 +42,9 @@ export default function Login(){
         e.preventDefault();
         
         try{
-            await api.post('/users', {}, {
-                headers: {
+            await api.post('/users', {
                     name: registerName,
                     password: registerPassword
-                }
             })
             
             setRegisterName('');
@@ -54,6 +52,8 @@ export default function Login(){
             alert('Cadastro feito com sucesso.')
         } catch(error){
             alert('Usuário ou senha inválidos.')
+            setRegisterName('');
+            setRegisterPassword('');
         }
     }
     
