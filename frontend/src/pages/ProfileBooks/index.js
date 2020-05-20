@@ -3,6 +3,7 @@ import React, { useState, useEffect } from  'react';
 import api from '../../services/api';
 import '../../components/BookItem/style.css'
 import './style.css'
+import Unauthorized from '../Unauthorized';
 
 export default function ProfileBooks(){
     const [books, setBooks] = useState([]);
@@ -67,6 +68,10 @@ export default function ProfileBooks(){
                 setBooks(response.data);
             });
     }, [user_id, username, password]);
+
+    if(localStorage.getItem('logged') !== 'true'){
+        return <Unauthorized/>;
+    }
 
     return(
         <div className="books_profile">

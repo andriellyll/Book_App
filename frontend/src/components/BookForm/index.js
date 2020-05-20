@@ -27,7 +27,7 @@ function Form(props) {
   }
 
   return (
-    <div className="form">
+    <div hidden={localStorage.getItem('admin') === 'false'} className="form">
       <form onSubmit={e => handleSubmit(e)}>
         <h3>Cadastrar livro</h3>
         <input 

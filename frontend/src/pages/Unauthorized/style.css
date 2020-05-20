@@ -1,0 +1,17 @@
+.unauthorized {
+    padding: 100px;
+    min-height: 625px;
+    max-width: 100%;
+    text-align: center;
+    background-color: #FAFAFA;
+}
+
+.unauthorized h1{
+    margin: 30px;
+    font-size: 50px;
+}
+
+.unauthorized a{
+    text-decoration: none;
+    color: #87CEEB;
+}

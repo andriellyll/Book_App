@@ -5,6 +5,7 @@ import Book from '../../components/BookItem';
 import './style.css';
 
 import api from '../../services/api'; 
+import Unauthorized from '../Unauthorized';
 
 function Profile () {
     const [books, setBooks] = useState([]);
@@ -72,7 +73,11 @@ function Profile () {
                 setBooks(response.data);
             });
     }, [isSearch]);
-    
+
+    if(localStorage.getItem('logged') !== 'true'){
+        return <Unauthorized/>;
+    }
+
     return (
         <div className="profile">
             <header id="page_header">

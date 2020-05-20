@@ -25,14 +25,21 @@ export default function Login(){
 
             const { id } = response.data;
 
+            localStorage.setItem('logged', true);
             localStorage.setItem('username', loginName);
             localStorage.setItem('password', loginPassword);
             localStorage.setItem('user_id', id);
+
+            if(loginName === 'admin' && loginPassword === 'admin'){
+                localStorage.setItem('admin', true);
+            } else {
+                localStorage.setItem('admin', false);
+            }
             
             setLoginName('');
             setLoginPassword('');
-
-            history.push('/profile');
+            
+            setTimeout(history.push('/profile'), 200);
         } catch(error){
             alert('Usuário ou senha inválidos.')
         }
