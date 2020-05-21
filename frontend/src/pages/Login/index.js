@@ -66,41 +66,44 @@ export default function Login(){
     
     return(
         <div className="login">
-            <form id="logon" onSubmit={e => {handleLogin(e)}}>
-                <header>Faça login</header>
-                <input 
-                    value={loginName} 
-                    type="text" 
-                    placeholder="Username"
-                    onChange={(e) => {setLoginName(e.target.value)}}
-                />
-                <input
-                    value={loginPassword} 
-                    type="password" 
-                    placeholder="Senha"
-                    onChange={(e) => {setLoginPassword(e.target.value)}}
-                />
-                <button type="submit">Entrar</button>
-            </form>
-           
-            <h1>OU</h1>
+            <header id="page_header"><h3>Sistema de Livros</h3></header>
+            <div className="forms">
+                <form id="logon" onSubmit={e => {handleLogin(e)}}>
+                    <header>Faça login</header>
+                    <input 
+                        value={loginName} 
+                        type="text" 
+                        placeholder="Username"
+                        onChange={(e) => {setLoginName(e.target.value)}}
+                    />
+                    <input
+                        value={loginPassword} 
+                        type="password" 
+                        placeholder="Senha"
+                        onChange={(e) => {setLoginPassword(e.target.value)}}
+                    />
+                    <button type="submit">Entrar</button>
+                </form>
+            
+                <h1>OU</h1>
 
-            <form id="register" onSubmit={e => {handleRegister(e)}}>
-                <header>Cadastre-se</header>
-                <input
-                    type="text" 
-                    value={registerName}
-                    placeholder="Username"
-                    onChange={(e) => {setRegisterName(e.target.value)}}
-                />
-                <input 
-                    type="password" 
-                    value={registerPassword}
-                    placeholder="Senha"
-                    onChange={(e) => {setRegisterPassword(e.target.value)}}
-                />
-                <button type="submit">Cadastrar</button>
-            </form>
+                <form id="register" onSubmit={e => {handleRegister(e)}}>
+                    <header>Cadastre-se</header>
+                    <input
+                        type="text" 
+                        value={registerName}
+                        placeholder="Username"
+                        onChange={(e) => {setRegisterName(e.target.value)}}
+                    />
+                    <input 
+                        type="password" 
+                        value={registerPassword}
+                        placeholder="Senha"
+                        onChange={(e) => {setRegisterPassword(e.target.value)}}
+                    />
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </div>
         </div>         
     );    
 }

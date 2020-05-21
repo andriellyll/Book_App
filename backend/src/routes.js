@@ -2,6 +2,7 @@ const { Router } = require('express');
 const BookController = require('./controllers/BookController');
 const UserController = require('./controllers/UserController');
 const BookUsersController = require('./controllers/BookUsersController');
+const RelationUsersController = require('./controllers/RelationUsersController');
 
 const routes = Router();
 
@@ -19,5 +20,9 @@ routes.get('/session', UserController.session);
 routes.post('/users/relate', BookUsersController.store);
 routes.get('/users/relate', BookUsersController.index);
 routes.delete('/users/relate', BookUsersController.delete);
+
+routes.get('/users/friends', RelationUsersController.index);
+routes.post('/users/friends', RelationUsersController.store);
+routes.get('/profile/friends', RelationUsersController.list);
 
 module.exports = routes;

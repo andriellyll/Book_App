@@ -25,7 +25,16 @@ module.exports = {
             return response.status(400).json({error: 'Something went wrong'});
         }
 
-        const relation = await connection('book_users')
+        let relation = await connection('book_users')
+            .where('user_id', user_id)
+            .andWhere('book_id', book_id)
+            .first();
+        
+        if(relation){
+            return;
+        }
+
+        relation = await connection('book_users')
             .insert({
                 user_id: user_id,
                 book_id: book_id
