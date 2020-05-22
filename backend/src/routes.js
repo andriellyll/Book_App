@@ -24,5 +24,6 @@ routes.delete('/users/relate', BookUsersController.delete);
 routes.get('/users/friends', RelationUsersController.index);
 routes.post('/users/friends', RelationUsersController.store);
 routes.get('/profile/friends', RelationUsersController.list);
+routes.delete('/users/friends', RelationUsersController.delete);
 
 module.exports = routes;

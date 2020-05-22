@@ -1,4 +1,5 @@
 const connection = require('../database/connection');
+const decode = require('../utils/decodeToken');
 
 module.exports = {
     async index (request, response) {
@@ -8,7 +9,14 @@ module.exports = {
     },
 
     async store (request, response) {
+        const { token } = request.headers;
         const {name, author, genre} = request.body;
+
+        const { admin } = await decode(token);
+
+        if(!admin){
+            response.status(401).json({error: 'Not allowed'});
+        }
 
         let book = await connection('books').where('name', name).first();
 
@@ -63,7 +71,14 @@ module.exports = {
     },
 
     async delete (request, response) {
+        const { token } = request.headers;
         const { id } = request.params;
+
+        const { admin } = await decode(token);
+
+        if(!admin){
+            response.status(401).json({error: 'Not allowed'});
+        }
         
         let book = await connection('books')
             .where('id', id)

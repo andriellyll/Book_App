@@ -1,4 +1,5 @@
 const connection = require('../database/connection');
+const generate = require('../utils/generateToken');
 
 module.exports = {
     async index (request, response) {
@@ -78,7 +79,31 @@ module.exports = {
             })
             .select('id')
             .first();
+        
+        let token = "";
 
-        return response.json(info);
+        if (name === "admin"){
+            token = await generate({
+                user_id: info.id,
+                admin: true
+            });
+        } else {
+            token = await generate({
+                user_id: info.id
+            });
+        }
+
+        return response.json({token});
+    },
+
+    async delete(request, response){
+        const { id } = request.params;
+
+        const user = await connection('users')
+            .where('id', id)
+            .del();
+        
+        return response.json(user);
     }
+
 }
