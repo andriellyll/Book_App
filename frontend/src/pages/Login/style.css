@@ -1,7 +1,7 @@
 .login {
     width: 100%;
     min-height: 625px;
-    background-color: #FAFAFA;
+    background-color: #2E2E2E;
 }
 
 .login .forms {
@@ -16,7 +16,7 @@
     flex-direction: column;
     width: 400px;
     height: 250px;
-    background-color: #fff;
+    background-color: #585858;
     border-radius: 8px;
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import Unauthorized from '../Unauthorized';
 
 import './style.css'
 
@@ -20,6 +21,9 @@ export default function Friends(){
         .catch(error => console.error(error))
     }, [user_id]);
     
+    if(localStorage.getItem('logged') !== 'true'){
+        return <Unauthorized/>;
+    }
 
     return(
         <div className="friends">

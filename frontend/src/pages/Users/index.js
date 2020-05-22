@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 import './style.css'
+import Unauthorized from '../Unauthorized';
 
 export default function Users() {
     const [users, setUsers] = useState([]);
@@ -37,6 +38,10 @@ export default function Users() {
         .then(response => {setUsers(response.data)})
         .catch(error => {console.log(error)});
     }, [logged_id]);
+
+    if(localStorage.getItem('logged') !== 'true'){
+        return <Unauthorized/>;
+    }
 
     return(
         <div className="users">

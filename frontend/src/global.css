@@ -3,13 +3,15 @@
     margin: 0;
     padding: 0;
     font-family: 'Fira Sans', sans-serif, monospace;
+    color: #fff;
 }
 
 input{
     margin: 8px;
     height: 30px;
     border-radius: 5px;
-    border: solid 1px #FAFAFA;
+    border: solid 1px #BDBDBD;
+    background-color: #585858;
     padding: 5px;
 }
 
@@ -18,9 +20,9 @@ button{
     padding: 8px;
     border-radius: 8px;
     border-style: none;
-    height: 30px;
+    height: 40px;
     cursor: pointer;
-    background-color: #87CEEB;
+    background-color: #819FF7;
     color: #fff;
 }
 
@@ -31,8 +33,7 @@ button:hover{
 .page_header {
     max-width: 100%;
     height: 70px;
-    background-color: #87CEEB;
-    color: #fff;
+    background-color: #819FF7;
     max-width: 100%;
     padding: 10px 30px;
     display: flex;
@@ -43,13 +44,12 @@ button:hover{
 .link {
     padding: 20px;
     text-decoration: none;
-    color: #fff;
 }
 
 .link:hover{
-    background-color: #FAFAFA;
+    background-color: #585858;
     border-radius: 8px;
-    color: black;
+    color:#fff;
     height: fit-content;
     width: fit-content;
     transition-duration: 500ms;
@@ -64,6 +64,6 @@ ul li {
     margin: 5px;
     padding: 20px;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #585858;;
     list-style: none;
 }
