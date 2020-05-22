@@ -4,6 +4,7 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import ProfileBooks from './pages/ProfileBooks';
 import Friends from './pages/Friends';
+import Users from './pages/Users';
 
 export default function Routes(){
     return (
@@ -13,6 +14,7 @@ export default function Routes(){
                 <Route path='/profile' component={Profile}/>
                 <Route path='/books' component={ProfileBooks}/>
                 <Route path='/friends' component={Friends}/>
+                <Route path='/users' component={Users}/>
             </Switch>
         </BrowserRouter>
     );

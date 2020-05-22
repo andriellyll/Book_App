@@ -34,6 +34,8 @@ function Profile () {
                 password: localStorage.getItem('password')
             }
         });
+
+        alert('Livro Adicionado!')
     }
 
     async function handleSearch(name) {

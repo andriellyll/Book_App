@@ -1,0 +1,8 @@
+.users {
+    background-color: #FAFAFA;
+}
+
+.users ul li {
+    display: flex;
+    justify-content: space-around;
+}

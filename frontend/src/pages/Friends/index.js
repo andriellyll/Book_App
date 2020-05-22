@@ -25,7 +25,10 @@ export default function Friends(){
         <div className="friends">
            <header className="page_header">
                <h3>Meus amigos</h3> 
-               <a className="link" href='/profile'>Voltar</a>
+               <div className="div_links">
+                   <a className="link" href='/users'>Adicionar Amigos</a>
+                   <a className="link" href='/profile'>Voltar</a>
+               </div>
            </header>
            
            <ul>
