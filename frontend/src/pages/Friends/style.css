@@ -1,0 +1,20 @@
+.friends {
+    max-width: 100%;
+    min-height: 625px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FAFAFA;
+}
+
+.friends ul {
+    max-width: 100%;
+    padding: 40px;
+}
+
+.friends ul li {
+    margin: 5px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    list-style: none;
+}

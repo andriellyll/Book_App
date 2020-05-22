@@ -66,7 +66,7 @@ export default function Login(){
     
     return(
         <div className="login">
-            <header id="page_header"><h3>Sistema de Livros</h3></header>
+            <header className="page_header"><h3>Sistema de Livros</h3></header>
             <div className="forms">
                 <form id="logon" onSubmit={e => {handleLogin(e)}}>
                     <header>Faça login</header>

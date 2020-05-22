@@ -42,8 +42,9 @@ module.exports = {
                 this.on('users.id', '=', 'relation_users.user1_id')
                 .orOn('users.id', '=', 'relation_users.user2_id')
               })
-              .where('user1_id', user_id)
-              .orWhere('user2_id', user_id)
+              .where(function() {
+                this.where('user1_id', user_id).orWhere('user2_id', user_id)
+              })
               .andWhereNot('id', user_id)
               .select('*');
             

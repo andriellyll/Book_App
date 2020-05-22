@@ -14,27 +14,3 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
-
-.books_profile #header {
-    height: 70px;
-    background-color: #87CEEB;
-    color: #fff;
-    display: flex;
-    justify-content: space-between;
-    max-width: 100%;
-    padding: 10px;
-}
-
-.books_profile a {
-    padding: 20px;
-    text-decoration: none;
-    color: #fff;
-}
-
-.books_profile #header a:hover{
-    background-color: #FAFAFA;
-    color: black;
-    height: fit-content;
-    width: fit-content;
-    transition-duration: 500ms;
-}

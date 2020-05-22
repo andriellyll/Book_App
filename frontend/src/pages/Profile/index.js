@@ -80,11 +80,13 @@ function Profile () {
 
     return (
         <div className="profile">
-            <header id="page_header">
+            <header className="page_header">
                 <h3>Bem vindo(a), {localStorage.getItem('username')}</h3>
                 <div className="links">
-                    <a href='/books'>Meus Livros</a>
+                    <a className="link" href='/books'>Meus Livros</a>
+                    <a className="link" href='/friends'>Meus Amigos</a>
                     <a 
+                        className="link"
                         href='/' 
                         onClick={() => {localStorage.clear()}}>
                         Sair

@@ -75,9 +75,9 @@ export default function ProfileBooks(){
 
     return(
         <div className="books_profile">
-            <header id='header'>
+            <header className="page_header">
                 <h3>Meus Livros</h3> 
-                <a href='/profile'>Voltar</a>
+                <a className="link" href='/profile'>Voltar</a>
             </header>
             <div id="books">
                 {renderBooks()}
