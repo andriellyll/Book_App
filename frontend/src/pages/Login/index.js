@@ -23,12 +23,11 @@ export default function Login(){
                 }
             })
 
-            const { id } = response.data;
+            const { token } = response.data;
 
             localStorage.setItem('logged', true);
+            localStorage.setItem('token', token);
             localStorage.setItem('username', loginName);
-            localStorage.setItem('password', loginPassword);
-            localStorage.setItem('user_id', id);
 
             if(loginName === 'admin' && loginPassword === 'admin'){
                 localStorage.setItem('admin', true);
@@ -39,7 +38,7 @@ export default function Login(){
             setLoginName('');
             setLoginPassword('');
             
-            setTimeout(history.push('/profile'), 200);
+            history.push('/profile');
         } catch(error){
             alert('Usuário ou senha inválidos.')
         }

@@ -6,13 +6,13 @@ import Unauthorized from '../Unauthorized';
 
 export default function Users() {
     const [users, setUsers] = useState([]);
-    const logged_id = localStorage.getItem('user_id');
+    const token = localStorage.getItem('token');
 
     async function handleClick(id) {
         try{
-            await api.post(`/users/friends?user1_id=${logged_id}&user2_id=${id}`, {}, {
+            await api.post(`/users/friends?user2_id=${id}`, {}, {
                 headers: {
-                    id: logged_id 
+                    token: localStorage.getItem('token')
                 }
             });
             alert('Amigo adicionado!')
@@ -37,7 +37,7 @@ export default function Users() {
         api.get('/users')
         .then(response => {setUsers(response.data)})
         .catch(error => {console.log(error)});
-    }, [logged_id]);
+    }, [token]);
 
     if(localStorage.getItem('logged') !== 'true'){
         return <Unauthorized/>;

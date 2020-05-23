@@ -6,20 +6,35 @@ import './style.css'
 
 export default function Friends(){
     const [friends, setFriends] = useState([]);
-    const user_id = localStorage.getItem('user_id');
+    const token = localStorage.getItem('token');
     
+    async function handleClick(id) {
+        await api.delete(`/users/friends?user2_id=${id}`, {
+            headers: {
+                token
+            }
+        });
+
+        const response = await api.get('/profile/friends', {
+            headers: {
+                token
+            }
+        });
+            
+        setFriends(response.data);
+    }
     
     useEffect(() => {
         api.get('/profile/friends', {
-            headers:{
-                user_id: localStorage.getItem('user_id')
+            headers: {
+                token: localStorage.getItem('token')
             }
         })
         .then(response => {
             setFriends(response.data)
         })
         .catch(error => console.error(error))
-    }, [user_id]);
+    }, [token]);
     
     if(localStorage.getItem('logged') !== 'true'){
         return <Unauthorized/>;
@@ -36,7 +51,11 @@ export default function Friends(){
            </header>
            
            <ul>
-                {friends.map(user => (<li key={user.id}>{user.name}</li>))}
+                {friends.map(user => (
+                    <li key={user.id}>
+                        <span>{user.name}</span>
+                        <button onClick={() => handleClick(user.id)}>Deletar de Meus Amigos</button>
+                    </li>))}
             </ul>
         </div>
     );

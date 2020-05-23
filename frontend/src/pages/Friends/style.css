@@ -5,3 +5,17 @@
     flex-direction: column;
     background-color: #2E2E2E;
 }
+
+.friends ul li {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.friends ul li span {
+    width: 160px;
+}
+
+.friends ul li button {
+    background-color: tomato;
+}

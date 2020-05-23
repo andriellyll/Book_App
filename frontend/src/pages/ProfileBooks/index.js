@@ -8,21 +8,18 @@ import Unauthorized from '../Unauthorized';
 export default function ProfileBooks(){
     const [books, setBooks] = useState([]);
     const username = localStorage.getItem('username');
-    const password = localStorage.getItem('password');
-    const user_id = localStorage.getItem('user_id');
+    const token = localStorage.getItem('token');
 
     async function handleDelete(id){
-        await api.delete(`/users/relate?user_id=${user_id}&book_id=${id}`, {
+        await api.delete(`/users/relate?book_id=${id}`, {
             headers: {
-                name: username,
-                password: password
+                token: localStorage.getItem('token')
             }
         });
 
-        const response = await api.get(`users/relate?user_id=${user_id}`, {
+        const response = await api.get('users/relate', {
             headers: {
-                name: username,
-                password: password
+                token: localStorage.getItem('token')
             }
         });
 
@@ -58,16 +55,15 @@ export default function ProfileBooks(){
     }
 
     useEffect(() => {
-        api.get(`users/relate?user_id=${user_id}`, {
+        api.get('users/relate', {
             headers: {
-                name: username,
-                password: password
+                token: localStorage.getItem('token')
             }
         })
             .then(response => {
                 setBooks(response.data);
             });
-    }, [user_id, username, password]);
+    }, [token, username]);
 
     if(localStorage.getItem('logged') !== 'true'){
         return <Unauthorized/>;

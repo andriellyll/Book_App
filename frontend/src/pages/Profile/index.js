@@ -14,24 +14,31 @@ function Profile () {
 
     async function handleRegister(data) {
         setIsSearch(false);
-        await api.post('/books', data);
+        await api.post('/books', data, {
+            headers: {
+                token: localStorage.getItem('token')
+            }
+        });
         const response = await api.get('/books');
         setBooks(response.data);
     }
 
     async function handleDelete(id) {
         setIsSearch(false);
-        await api.delete(`/books/${id}`);
+        await api.delete(`/books/${id}`, {
+                headers: {
+                    token: localStorage.getItem('token')
+                }
+        });
         const response = await api.get('/books');
         setBooks(response.data);
     }
 
     async function handleAddUserBook(id) {
-        await api.post(`users/relate?user_id=${localStorage.getItem('user_id')}&book_id=${id}`, 
+        await api.post(`users/relate?book_id=${id}`, 
         {}, {
             headers: {
-                name: localStorage.getItem('username'),
-                password: localStorage.getItem('password')
+                token: localStorage.getItem('token')
             }
         });
 
