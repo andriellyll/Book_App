@@ -1,5 +1,12 @@
 .users {
     background-color: #2E2E2E;
+    min-height: 639px;
+}
+
+.users ul {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
 }
 
 .users ul li {

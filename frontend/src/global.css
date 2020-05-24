@@ -47,7 +47,7 @@ button:hover{
 }
 
 .link:hover{
-    background-color: #585858;
+    background-color: #2E2E2E;
     border-radius: 8px;
     color:#fff;
     height: fit-content;
@@ -57,7 +57,7 @@ button:hover{
 
 ul {
     max-width: 100%;
-    padding: 40px;
+    padding: 10px;
 }
 
 ul li {

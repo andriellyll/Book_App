@@ -27,7 +27,7 @@ export default function Friends(){
     useEffect(() => {
         api.get('/profile/friends', {
             headers: {
-                token: localStorage.getItem('token')
+                token
             }
         })
         .then(response => {
@@ -53,7 +53,12 @@ export default function Friends(){
            <ul>
                 {friends.map(user => (
                     <li key={user.id}>
-                        <span>{user.name}</span>
+                        <a 
+                            className='link' 
+                            onClick={() => {localStorage.setItem('user_search', user.name)}} 
+                            href='/user/profile'>
+                                {user.name}
+                        </a>
                         <button onClick={() => handleClick(user.id)}>Deletar de Meus Amigos</button>
                     </li>))}
             </ul>

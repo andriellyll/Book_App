@@ -44,15 +44,15 @@ module.exports = {
     },
 
     async index(request, response){
-        const { token } = request.headers;
-
-        if(!token){
-            response.status(401).json({error: 'Not allowed'})
-        }
-
+        const { username } = request.headers;
+        
         try{
-            const { user_id } = await decode(token);
-                
+            const user = await connection('users')
+                .where('name', username)
+                .first();
+            
+            const user_id = user.id;
+            
             const books = await connection('books')
                     .join('book_users', 'id', 'book_users.book_id')
                     .where('user_id', user_id)

@@ -26,7 +26,12 @@ export default function Users() {
             <ul>
                 {users.map(user => (
                     <li key={user.id}>
-                        {user.name}
+                        <a 
+                            className='link' 
+                            onClick={() => {localStorage.setItem('user_search', user.name)}} 
+                            href='/user/profile'>
+                                {user.name}
+                        </a>
                         <button onClick={() => {handleClick(user.id)}}>Adicionar aos Meus Amigos</button>
                     </li>))}
             </ul>
@@ -47,7 +52,7 @@ export default function Users() {
         <div className="users">
             <header className="page_header">
                 <h3>Usuários</h3>
-                <a href="/profile" className="link">Voltar</a>
+                <a href="/friends" className="link">Voltar</a>
             </header>
             {renderUsers()}
         </div>

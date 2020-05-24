@@ -5,6 +5,7 @@ import Profile from './pages/Profile';
 import ProfileBooks from './pages/ProfileBooks';
 import Friends from './pages/Friends';
 import Users from './pages/Users';
+import ProfileUser from './pages/ProfileUser';
 
 export default function Routes(){
     return (
@@ -15,6 +16,7 @@ export default function Routes(){
                 <Route path='/books' component={ProfileBooks}/>
                 <Route path='/friends' component={Friends}/>
                 <Route path='/users' component={Users}/>
+                <Route path='/user/profile' component={ProfileUser}/>
             </Switch>
         </BrowserRouter>
     );

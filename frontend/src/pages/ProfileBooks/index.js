@@ -13,13 +13,13 @@ export default function ProfileBooks(){
     async function handleDelete(id){
         await api.delete(`/users/relate?book_id=${id}`, {
             headers: {
-                token: localStorage.getItem('token')
+                token: token
             }
         });
 
         const response = await api.get('users/relate', {
             headers: {
-                token: localStorage.getItem('token')
+                username: username
             }
         });
 
@@ -43,7 +43,8 @@ export default function ProfileBooks(){
 
     function renderBooks() {
         
-        return(books.map(book => (
+        return(
+            books.map(book => (
             <Book
                 key={book.id}
                 name={book.name}
@@ -57,12 +58,13 @@ export default function ProfileBooks(){
     useEffect(() => {
         api.get('users/relate', {
             headers: {
-                token: localStorage.getItem('token')
+                username: username
             }
         })
             .then(response => {
                 setBooks(response.data);
-            });
+            })
+            .catch(err => {console.log(err)});
     }, [token, username]);
 
     if(localStorage.getItem('logged') !== 'true'){

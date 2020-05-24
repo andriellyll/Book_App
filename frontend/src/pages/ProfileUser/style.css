@@ -1,0 +1,12 @@
+.profile_user {
+    display: flex;
+    flex-direction: column;
+    background-color: #2E2E2E;
+    min-height: 639px;
+}
+
+.profile_user ul {
+    display: grid;
+    max-width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+}

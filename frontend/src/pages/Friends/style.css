@@ -1,9 +1,15 @@
 .friends {
     max-width: 100%;
-    min-height: 625px;
+    min-height: 639px;
     display: flex;
     flex-direction: column;
     background-color: #2E2E2E;
+}
+
+.friends ul {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
 }
 
 .friends ul li {
