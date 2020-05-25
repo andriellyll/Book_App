@@ -33,7 +33,7 @@ module.exports = {
 
     async find (request, response) {
         const { name } = request.query;
-
+        
         let book = await connection('books').where('name', name).first();
     
         if(!book){
@@ -44,8 +44,14 @@ module.exports = {
     },
 
     async update (request, response) {
+        const { token } = request.headers;
         const { id } = request.params;
-        const { name, author, genre } = request.body;
+        const { name, author, genre } = request.body;        
+        const { admin } = await decode(token);
+
+        if(!admin){
+            response.status(401).json({error: 'Not allowed'});
+        }
 
         let book = await connection('books').where('id', id).first();
     
@@ -53,8 +59,11 @@ module.exports = {
             return response.status(400).json({ error: 'No book found' });
         }
 
-        let bookCheckName = await connection('books').whereNot('id', id).andWhere('name', name).first();
-
+        const bookCheckName = await connection('books')
+            .whereNot('id', id)
+            .where('name', name)
+            .first();
+        
         if(!bookCheckName){
             await connection('books')
                 .where('id', id)

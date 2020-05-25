@@ -27,3 +27,8 @@
 .profile h3 {
     padding: 18px 8px;
 }
+
+.modalForm {
+    display: flex;
+    flex-direction: column;
+} 

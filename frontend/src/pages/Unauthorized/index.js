@@ -2,6 +2,7 @@ import React from 'react';
 import './style.css';
 
 export default function Unauthorized(){
+    
     return(
         <div className='unauthorized'>
             <h1>401 Unauthorized</h1>

@@ -1,6 +1,6 @@
 .friends {
     max-width: 100%;
-    min-height: 639px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     background-color: #2E2E2E;
@@ -18,10 +18,7 @@
     align-items: center;
 }
 
-.friends ul li span {
-    width: 160px;
-}
-
 .friends ul li button {
     background-color: tomato;
+    
 }
